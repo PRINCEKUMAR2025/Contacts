@@ -52,7 +52,7 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="149dp"
         android:gravity="center_horizontal"
         android:text="Apps built with ❤️"
         android:textSize="18dp"
