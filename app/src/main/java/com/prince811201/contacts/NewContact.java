@@ -40,7 +40,7 @@ public class NewContact extends AppCompatActivity {
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         tvLoad = findViewById(R.id.tvLoad);
-        imageView2=findViewById(R.id.imageView2);
+
 
         btnNewContact=findViewById(R.id.btnNewContact);
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_on_surface_disabled"
+    android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.prince811201.contacts.MainActivity">
@@ -14,19 +14,18 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:text="Fast, easy, and affordable"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/download" />
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="900dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/contactmain" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnList"
@@ -36,7 +35,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/buttons"
-        android:text=" List Of Contacts" />
+        android:text=" List Of Contacts"
+        android:textColor="@color/ic_launcher_background" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCreate"
@@ -46,13 +46,14 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/buttons"
-        android:text="Create Contact" />
+        android:text="Create Contact"
+        android:textColor="@color/ic_launcher_background" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="60dp"
         android:gravity="center_horizontal"
         android:text="Apps built with ❤️"
         android:textSize="18dp"

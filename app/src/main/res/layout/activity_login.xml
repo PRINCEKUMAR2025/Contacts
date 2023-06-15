@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/material_on_surface_disabled"
+    android:background="@color/white"
     tools:context="com.prince811201.contacts.Login">
 
     <ProgressBar
@@ -41,31 +41,33 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:gravity="center_horizontal"
             android:text="Login"
+            android:textColor="@color/black"
             android:textSize="35dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/lock" />
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="217dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logincontact" />
 
         <EditText
             android:id="@+id/etMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:gravity="center_horizontal"
-            android:hint="please enter your email address"
-            android:inputType="textEmailAddress" />
+            android:hint="Enter your email-id"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/etPassword"
@@ -74,10 +76,13 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:gravity="center_horizontal"
-            android:hint="please enter your password"
-            android:inputType="textPassword" />
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,6 +100,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/buttons"
                 android:text="Register"
+                android:textColor="@color/ic_launcher_background"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -107,6 +113,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/buttons"
                 android:text="Login"
+                android:textColor="@color/ic_launcher_background"
                 android:textStyle="bold" />
         </LinearLayout>
 

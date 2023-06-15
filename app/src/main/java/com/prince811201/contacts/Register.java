@@ -43,7 +43,6 @@ public class Register extends AppCompatActivity {
         etPassword=findViewById(R.id.etPassword);
         etReEnter=findViewById(R.id.etReEnter);
         btnRegister=findViewById(R.id.btnRegister);
-        imageView5=findViewById(R.id.imageView5);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override

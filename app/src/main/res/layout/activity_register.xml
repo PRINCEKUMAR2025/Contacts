@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/material_on_surface_disabled"
+    android:background="@color/white"
     tools:context="com.prince811201.contacts.Register">
 
     <ProgressBar
@@ -41,12 +41,11 @@
         android:orientation="vertical">
 
 
-        <ImageView
-            android:id="@+id/imageView5"
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:srcCompat="@drawable/png1" />
+            android:layout_height="250dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/registeruser" />
 
         <EditText
             android:id="@+id/etName"
@@ -105,6 +104,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/buttons"
             android:text="Register"
+            android:textColor="@color/ic_launcher_background"
             android:textStyle="bold" />
     </LinearLayout>
 

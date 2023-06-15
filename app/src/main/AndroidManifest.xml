@@ -16,18 +16,23 @@
         tools:targetApi="31">
         <activity
             android:name="com.prince811201.contacts.ContactInfo"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.prince811201.contacts.ContactList"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.prince811201.contacts.NewContact"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.prince811201.contacts.Register"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.prince811201.contacts.Login"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +42,7 @@
         </activity>
         <activity
             android:name="com.prince811201.contacts.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true" />
     </application>
 

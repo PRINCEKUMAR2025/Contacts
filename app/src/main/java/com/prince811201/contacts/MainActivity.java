@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.backendless.Backendless;
 import com.prince811201.contacts.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
             btnCreate=findViewById(R.id.btnCreate);
             textView=findViewById(R.id.textView);
             textView3=findViewById(R.id.textView3);
-            imageView3=findViewById(R.id.imageView3);
 
             btnList.setOnClickListener(new View.OnClickListener() {
                 @Override
