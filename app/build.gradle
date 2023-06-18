@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.prince811201.contacts'
+    namespace 'com.prince5326.contacts'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.prince811201.contacts"
+        applicationId "com.prince5326.contacts"
         minSdk 24
         targetSdk 32
         versionCode 1

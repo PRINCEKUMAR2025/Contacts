@@ -1,91 +1,92 @@
-package com.prince811201.contacts;
+package com.prince5326.contacts;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
-import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.prince811201.contacts.R;
+import com.backendless.persistence.DataQueryBuilder;
+import com.prince5326.contacts.R;
 
-public class Register extends AppCompatActivity {
+import java.util.List;
+
+public class ContactList extends AppCompatActivity {
+
+    ListView lvList;
+
     private View mProgressView;
     private View mLoginFormView;
     private TextView tvLoad;
-
-    EditText etName,etMail,etPassword,etReEnter;
-    ImageView imageView5;
-    Button btnRegister;
+    ContactsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_contact_list);
 
+        lvList=findViewById(R.id.lvList);
+
+        lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+                Intent intent=new Intent(ContactList.this,ContactInfo.class);
+                intent.putExtra("index", i);
+                startActivityForResult(intent,1);
+            }
+        });
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         tvLoad = findViewById(R.id.tvLoad);
 
-        etName=findViewById(R.id.etName);
-        etMail=findViewById(R.id.etMail);
-        etPassword=findViewById(R.id.etPassword);
-        etReEnter=findViewById(R.id.etReEnter);
-        btnRegister=findViewById(R.id.btnRegister);
+        String whereClause="userEmail = '"+ApplicationClass.user.getEmail() +"'";
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        DataQueryBuilder queryBuilder =DataQueryBuilder.create();
+        queryBuilder.setWhereClause(whereClause);
+        queryBuilder.setGroupBy("name");
+
+        showProgress(true);
+        tvLoad.setText("Getting all Contacts...Please wait...");
+
+        Backendless.Persistence.of(Contact.class).find(queryBuilder, new AsyncCallback<List<Contact>>() {
             @Override
-            public void onClick(View v) {
-                if(etName.getText().toString().isEmpty() || etMail.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty() || etReEnter.getText().toString().isEmpty())
-                {
-                    Toast.makeText(Register.this, "Please Enter All Details!", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    if (etPassword.getText().toString().trim().equals(etReEnter.getText().toString().trim())){
-                        String name=etName.getText().toString().trim();
-                        String email=etMail.getText().toString().trim();
-                        String password=etPassword.getText().toString().trim();
+            public void handleResponse(List<Contact> response) {
 
-                        BackendlessUser user=new BackendlessUser();
-                        user.setEmail(email);
-                        user.setPassword(password);
-                        user.setProperty("name",name);
+                ApplicationClass.contacts=response;
+                adapter=new ContactsAdapter(ContactList.this,ApplicationClass.contacts);
+                lvList.setAdapter(adapter);
+                showProgress(false);
+            }
 
-                        showProgress(true);
-                        tvLoad.setText("Registering User..");
-
-                        Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
-                            @Override
-                            public void handleResponse(BackendlessUser response) {
-                                Toast.makeText(Register.this, "User Successfully Registered! Please verify your mail-id..", Toast.LENGTH_SHORT).show();
-                                Register.this.finish();
-                            }
-
-                            @Override
-                            public void handleFault(BackendlessFault fault) {
-                                Toast.makeText(Register.this, "Error:"+fault.getMessage(), Toast.LENGTH_SHORT).show();
-                                showProgress(false);
-                            }
-                        });
-                    }
-                    else {
-                        Toast.makeText(Register.this, "Please make sure your password and re-enter password are same!", Toast.LENGTH_SHORT).show();
-                    }
-                }
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(ContactList.this, "Error: "+fault.getMessage(), Toast.LENGTH_SHORT).show();
+                showProgress(false);
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode==1){
+            adapter.notifyDataSetChanged();
+        }
+    }
+
     /**
      * Shows the progress UI and hides the login form.
      */

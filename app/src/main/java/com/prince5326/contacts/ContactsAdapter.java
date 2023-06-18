@@ -1,4 +1,4 @@
-package com.prince811201.contacts;
+package com.prince5326.contacts;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.prince811201.contacts.R;
+import com.prince5326.contacts.R;
 
 import java.util.List;
 

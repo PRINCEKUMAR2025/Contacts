@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.prince811201.contacts.ContactInfo">
+    tools:context="com.prince5326.contacts.ContactInfo">
 
     <ProgressBar
         android:id="@+id/login_progress"

@@ -1,4 +1,4 @@
-package com.prince811201.contacts;
+package com.prince5326.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +19,7 @@ import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.local.UserIdStorageFactory;
-import com.prince811201.contacts.R;
+import com.prince5326.contacts.R;
 
 public class Login extends AppCompatActivity {
     private View mProgressView;

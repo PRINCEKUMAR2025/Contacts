@@ -1,4 +1,4 @@
-package com.prince811201.contacts;
+package com.prince5326.contacts;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.prince811201.contacts.R;
+import com.prince5326.contacts.R;
 
 public class ContactInfo extends AppCompatActivity {
 

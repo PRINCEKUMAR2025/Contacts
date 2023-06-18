@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.prince811201.contacts.MainActivity">
+    tools:context="com.prince5326.contacts.MainActivity">
 
 
     <TextView
@@ -28,17 +28,6 @@
         android:src="@drawable/contactmain" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/buttons"
-        android:text=" List Of Contacts"
-        android:textColor="@color/ic_launcher_background" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +36,17 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/buttons"
         android:text="Create Contact"
+        android:textColor="@color/ic_launcher_background" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/buttons"
+        android:text=" List Of Contacts"
         android:textColor="@color/ic_launcher_background" />
 
     <TextView
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
-        android:text="Designed By Prince"
+        android:text="Designed By Prince."
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold" />

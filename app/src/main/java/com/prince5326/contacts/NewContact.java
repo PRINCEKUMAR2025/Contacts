@@ -1,92 +1,90 @@
-package com.prince811201.contacts;
+package com.prince5326.contacts;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.backendless.persistence.DataQueryBuilder;
-import com.prince811201.contacts.R;
+import com.prince5326.contacts.R;
 
-import java.util.List;
-
-public class ContactList extends AppCompatActivity {
-
-    ListView lvList;
+public class NewContact extends AppCompatActivity {
+    Button btnNewContact;
+    EditText etName,etNumber,etMail;
 
     private View mProgressView;
     private View mLoginFormView;
     private TextView tvLoad;
-    ContactsAdapter adapter;
+    ImageView imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_list);
+        setContentView(R.layout.activity_new_contact);
 
-        lvList=findViewById(R.id.lvList);
+        etName=findViewById(R.id.etName);
+        etMail=findViewById(R.id.etMail);
+        etNumber=findViewById(R.id.etNumber);
 
-        lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-                Intent intent=new Intent(ContactList.this,ContactInfo.class);
-                intent.putExtra("index", i);
-                startActivityForResult(intent,1);
-            }
-        });
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         tvLoad = findViewById(R.id.tvLoad);
 
-        String whereClause="userEmail = '"+ApplicationClass.user.getEmail() +"'";
 
-        DataQueryBuilder queryBuilder =DataQueryBuilder.create();
-        queryBuilder.setWhereClause(whereClause);
-        queryBuilder.setGroupBy("name");
+        btnNewContact=findViewById(R.id.btnNewContact);
 
-        showProgress(true);
-        tvLoad.setText("Getting all Contacts...Please wait...");
-
-        Backendless.Persistence.of(Contact.class).find(queryBuilder, new AsyncCallback<List<Contact>>() {
+        btnNewContact.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void handleResponse(List<Contact> response) {
+            public void onClick(View v) {
+                if (etMail.getText().toString().isEmpty() || etName.getText().toString().isEmpty() || etNumber.getText().toString().isEmpty()){
+                    Toast.makeText(NewContact.this, "Please Enter All Fields", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    String name =etName.getText().toString().trim();
+                    String email=etMail.getText().toString().trim();
+                    String number=etNumber.getText().toString().trim();
 
-                ApplicationClass.contacts=response;
-                adapter=new ContactsAdapter(ContactList.this,ApplicationClass.contacts);
-                lvList.setAdapter(adapter);
-                showProgress(false);
-            }
+                    Contact contact=new Contact();
+                    contact.setName(name);
+                    contact.setEmail(email);
+                    contact.setNumber(number);
+                    contact.setUserEmail(ApplicationClass.user.getEmail());
 
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                Toast.makeText(ContactList.this, "Error: "+fault.getMessage(), Toast.LENGTH_SHORT).show();
-                showProgress(false);
+                    showProgress(true);
+                    tvLoad.setText("Creating New Contact..please wait..");
+
+                    Backendless.Persistence.save(contact, new AsyncCallback<Contact>() {
+                        @Override
+                        public void handleResponse(Contact response) {
+                            Toast.makeText(NewContact.this, "New Contact Saved Successfully!", Toast.LENGTH_SHORT).show();
+                            showProgress(false);
+                            etName.setText("");
+                            etMail.setText("");
+                            etNumber.setText("");
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+                            Toast.makeText(NewContact.this, "Error:"+fault.getMessage(), Toast.LENGTH_SHORT).show();
+                            showProgress(false);
+                        }
+                    });
+                }
             }
         });
+
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode==1){
-            adapter.notifyDataSetChanged();
-        }
-    }
-
     /**
      * Shows the progress UI and hides the login form.
      */

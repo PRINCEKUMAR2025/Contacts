@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.prince811201.contacts.ApplicationClass"
+        android:name="com.prince5326.contacts.ApplicationClass"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,23 +15,23 @@
         android:theme="@style/Theme.Contacts"
         tools:targetApi="31">
         <activity
-            android:name="com.prince811201.contacts.ContactInfo"
+            android:name="com.prince5326.contacts.ContactInfo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
-            android:name="com.prince811201.contacts.ContactList"
+            android:name="com.prince5326.contacts.ContactList"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
-            android:name="com.prince811201.contacts.NewContact"
+            android:name="com.prince5326.contacts.NewContact"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
-            android:name="com.prince811201.contacts.Register"
+            android:name="com.prince5326.contacts.Register"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
-            android:name="com.prince811201.contacts.Login"
+            android:name="com.prince5326.contacts.Login"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.prince811201.contacts.MainActivity"
+            android:name="com.prince5326.contacts.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true" />
     </application>

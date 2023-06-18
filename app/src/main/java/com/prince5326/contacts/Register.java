@@ -1,4 +1,4 @@
-package com.prince811201.contacts;
+package com.prince5326.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,75 +15,76 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.prince811201.contacts.R;
+import com.prince5326.contacts.R;
 
-public class NewContact extends AppCompatActivity {
-    Button btnNewContact;
-    EditText etName,etNumber,etMail;
-
+public class Register extends AppCompatActivity {
     private View mProgressView;
     private View mLoginFormView;
     private TextView tvLoad;
-    ImageView imageView2;
+
+    EditText etName,etMail,etPassword,etReEnter;
+    ImageView imageView5;
+    Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_contact);
-
-        etName=findViewById(R.id.etName);
-        etMail=findViewById(R.id.etMail);
-        etNumber=findViewById(R.id.etNumber);
+        setContentView(R.layout.activity_register);
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         tvLoad = findViewById(R.id.tvLoad);
 
+        etName=findViewById(R.id.etName);
+        etMail=findViewById(R.id.etMail);
+        etPassword=findViewById(R.id.etPassword);
+        etReEnter=findViewById(R.id.etReEnter);
+        btnRegister=findViewById(R.id.btnRegister);
 
-        btnNewContact=findViewById(R.id.btnNewContact);
-
-        btnNewContact.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etMail.getText().toString().isEmpty() || etName.getText().toString().isEmpty() || etNumber.getText().toString().isEmpty()){
-                    Toast.makeText(NewContact.this, "Please Enter All Fields", Toast.LENGTH_SHORT).show();
+                if(etName.getText().toString().isEmpty() || etMail.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty() || etReEnter.getText().toString().isEmpty())
+                {
+                    Toast.makeText(Register.this, "Please Enter All Details!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    String name =etName.getText().toString().trim();
-                    String email=etMail.getText().toString().trim();
-                    String number=etNumber.getText().toString().trim();
+                    if (etPassword.getText().toString().trim().equals(etReEnter.getText().toString().trim())){
+                        String name=etName.getText().toString().trim();
+                        String email=etMail.getText().toString().trim();
+                        String password=etPassword.getText().toString().trim();
 
-                    Contact contact=new Contact();
-                    contact.setName(name);
-                    contact.setEmail(email);
-                    contact.setNumber(number);
-                    contact.setUserEmail(ApplicationClass.user.getEmail());
+                        BackendlessUser user=new BackendlessUser();
+                        user.setEmail(email);
+                        user.setPassword(password);
+                        user.setProperty("name",name);
 
-                    showProgress(true);
-                    tvLoad.setText("Creating New Contact..please wait..");
+                        showProgress(true);
+                        tvLoad.setText("Registering User..");
 
-                    Backendless.Persistence.save(contact, new AsyncCallback<Contact>() {
-                        @Override
-                        public void handleResponse(Contact response) {
-                            Toast.makeText(NewContact.this, "New Contact Saved Successfully!", Toast.LENGTH_SHORT).show();
-                            showProgress(false);
-                            etName.setText("");
-                            etMail.setText("");
-                            etNumber.setText("");
-                        }
+                        Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
+                            @Override
+                            public void handleResponse(BackendlessUser response) {
+                                Toast.makeText(Register.this, "User Successfully Registered! Please verify your mail-id..", Toast.LENGTH_SHORT).show();
+                                Register.this.finish();
+                            }
 
-                        @Override
-                        public void handleFault(BackendlessFault fault) {
-                            Toast.makeText(NewContact.this, "Error:"+fault.getMessage(), Toast.LENGTH_SHORT).show();
-                            showProgress(false);
-                        }
-                    });
+                            @Override
+                            public void handleFault(BackendlessFault fault) {
+                                Toast.makeText(Register.this, "Error:"+fault.getMessage(), Toast.LENGTH_SHORT).show();
+                                showProgress(false);
+                            }
+                        });
+                    }
+                    else {
+                        Toast.makeText(Register.this, "Please make sure your password and re-enter password are same!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
-
     }
     /**
      * Shows the progress UI and hides the login form.

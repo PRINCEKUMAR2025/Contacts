@@ -1,4 +1,4 @@
-package com.prince811201.contacts;
+package com.prince5326.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.backendless.Backendless;
-import com.prince811201.contacts.R;
+import com.prince5326.contacts.R;
 
 public class MainActivity extends AppCompatActivity {
 
