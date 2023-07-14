@@ -7,11 +7,15 @@ Secure Access: The login page adds an extra layer of security to the Contacts ap
 Step1:
 First of all you need to register yourself with name email and password in our database to login into the app.
 
+![IMG-20230519-WA0003](https://github.com/PRINCEKUMAR2025/Contacts/assets/96488489/043bb284-12e3-4420-997f-49d43f978c69)
+
 Step2:
 Then a verification link will be sent to your registered email id,you have to verify your email-id by clicking on link sent you through mail(Two step verification for more security).
 
 Step3:
 Then after email verification you can login into the app.
+
+![IMG-20230519-WA0006](https://github.com/PRINCEKUMAR2025/Contacts/assets/96488489/80f5f692-6b3c-4fdc-b34b-93a90aa253d2)
 
 Step4:
 An interface will open with create contact / View contacts.
@@ -28,11 +32,12 @@ Now in View contact you get a list of all contacts you have saved.
 Step8:
 Now if you will click any of the contact a new window will open from where you can edit that contact details in database / Delete that contact from your database.
 
-Ste9:
-you can also call and email the contact via application,it will retrive Phone number and email-id from database while calling and emailing.
-![IMG-20230519-WA0003](https://github.com/PRINCEKUMAR2025/Contacts/assets/96488489/043bb284-12e3-4420-997f-49d43f978c69)
-![IMG-20230519-WA0006](https://github.com/PRINCEKUMAR2025/Contacts/assets/96488489/80f5f692-6b3c-4fdc-b34b-93a90aa253d2)
 ![IMG-20230519-WA0009](https://github.com/PRINCEKUMAR2025/Contacts/assets/96488489/6cb06117-425c-4a3f-b672-1d009515495e)
+
+Ste9:
+you can also call and email the contact via application,it will retrive Phone number and email-id from database while calling and emailing.(operations)
+
+
 
 
 
