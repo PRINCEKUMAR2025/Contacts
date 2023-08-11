@@ -8,8 +8,8 @@ import com.backendless.BackendlessUser;
 import java.util.List;
 
 public class ApplicationClass extends Application {
-    public static final String APPLICATION_ID = "241DA653-A6C0-DDC0-FF36-A831FA58CB00";
-    public static final String API_KEY = "0A1C7BA0-3B36-4A9E-B464-C2827CB1DD0D";
+    public static final String APPLICATION_ID = "F5EB923D-FCCC-9521-FF2D-D6BFA54D5500";
+    public static final String API_KEY = "2219C8CE-A89F-4975-8F54-9330E8E8E6E8";
     public static final String SERVER_URL = "https://api.backendless.com";
 
     public static BackendlessUser user;

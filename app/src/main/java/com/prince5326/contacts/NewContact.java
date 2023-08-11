@@ -62,12 +62,12 @@ public class NewContact extends AppCompatActivity {
                     contact.setUserEmail(ApplicationClass.user.getEmail());
 
                     showProgress(true);
-                    tvLoad.setText("Creating New Contact..please wait..");
+                    tvLoad.setText("Creating New Attendance..please wait..");
 
                     Backendless.Persistence.save(contact, new AsyncCallback<Contact>() {
                         @Override
                         public void handleResponse(Contact response) {
-                            Toast.makeText(NewContact.this, "New Contact Saved Successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NewContact.this, "New Attendance Saved Successfully!", Toast.LENGTH_SHORT).show();
                             showProgress(false);
                             etName.setText("");
                             etMail.setText("");
