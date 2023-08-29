@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 import com.prince5326.contacts.R;
 
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
             btnCreate=findViewById(R.id.btnCreate);
             textView=findViewById(R.id.textView);
             textView3=findViewById(R.id.textView3);
+
+        AppCenter.start(getApplication(), "ae9da51b-476e-43da-bb0e-3fc750ec767b",
+                Analytics.class, Crashes.class);
 
             btnList.setOnClickListener(new View.OnClickListener() {
                 @Override
