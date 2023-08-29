@@ -104,7 +104,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:hint="please enter contact name"
+            android:hint="Enter contact name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -115,7 +115,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:hint="please enter email address"
+            android:hint="Enter email address"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -126,7 +126,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:hint="please enter telephone number"
+            android:hint="Enter telephone number"
             android:inputType="phone" />
 
         <androidx.appcompat.widget.AppCompatButton
