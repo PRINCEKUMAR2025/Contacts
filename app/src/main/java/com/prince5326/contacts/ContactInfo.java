@@ -48,8 +48,8 @@ public class ContactInfo extends AppCompatActivity {
         tvChar=findViewById(R.id.tvChar);
         tvName=findViewById(R.id.tvName);
 
-//        ivCall=findViewById(R.id.ivCall);
-//        ivMail=findViewById(R.id.ivMail);
+        ivCall=findViewById(R.id.ivCall);
+        ivMail=findViewById(R.id.ivMail);
         ivEdit=findViewById(R.id.ivEdit);
         ivDelete=findViewById(R.id.ivDelete);
 
@@ -73,27 +73,27 @@ public class ContactInfo extends AppCompatActivity {
         tvChar.setText(ApplicationClass.contacts.get(index).getName().toUpperCase().charAt(0)+"");
         tvName.setText(ApplicationClass.contacts.get(index).getName());
 
-//        ivCall.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                String uri="tel:"+ApplicationClass.contacts.get(index).getNumber();
-//                Intent intent=new Intent(Intent.ACTION_DIAL);
-//                intent.setData(Uri.parse(uri));
-//                startActivity(intent);
-//            }
-//        });
+        ivCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        ivMail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent=new Intent(Intent.ACTION_SEND);
-//                intent.setType("text/html");
-//                intent.putExtra(Intent.EXTRA_EMAIL,ApplicationClass.contacts.get(index).getEmail());
-//                startActivity(Intent.createChooser(intent,"Send mail to "+ApplicationClass.contacts.get(index).getName()));
-//            }
-//        });
+                String uri="tel:"+ApplicationClass.contacts.get(index).getNumber();
+                Intent intent=new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(uri));
+                startActivity(intent);
+            }
+        });
+
+        ivMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(Intent.ACTION_SEND);
+                intent.setType("text/html");
+                intent.putExtra(Intent.EXTRA_EMAIL,ApplicationClass.contacts.get(index).getEmail());
+                startActivity(Intent.createChooser(intent,"Send mail to "+ApplicationClass.contacts.get(index).getName()));
+            }
+        });
 
         ivEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,14 +128,14 @@ public class ContactInfo extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         showProgress(true);
-                        tvLoad.setText("Deleting Attendance...please wait...");
+                        tvLoad.setText("Deleting Contact...please wait...");
 
                         Backendless.Persistence.of(Contact.class).remove(ApplicationClass.contacts.get(index), new AsyncCallback<Long>() {
                             @Override
                             public void handleResponse(Long response) {
 
                                 ApplicationClass.contacts.remove(index);
-                                Toast.makeText(ContactInfo.this, "Attendance Successfully removed!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContactInfo.this, "Contact Successfully removed!", Toast.LENGTH_SHORT).show();
                                 setResult(RESULT_OK);
                                 ContactInfo.this.finish();
                             }
@@ -173,7 +173,7 @@ public class ContactInfo extends AppCompatActivity {
                     ApplicationClass.contacts.get(index).setEmail(etMail.getText().toString().trim());
 
                     showProgress(true);
-                    tvLoad.setText("Updating Attendance...please wait...");
+                    tvLoad.setText("Updating Contact...please wait...");
 
                     Backendless.Persistence.save(ApplicationClass.contacts.get(index), new AsyncCallback<Contact>() {
                         @Override
@@ -181,7 +181,7 @@ public class ContactInfo extends AppCompatActivity {
 
                             tvChar.setText(ApplicationClass.contacts.get(index).getName().toUpperCase().charAt(0)+"");
                             tvName.setText(ApplicationClass.contacts.get(index).getName());
-                            Toast.makeText(ContactInfo.this, "Attendance Successfully Updated!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ContactInfo.this, "Contact Successfully Updated!", Toast.LENGTH_SHORT).show();
                             showProgress(false);
                         }
 

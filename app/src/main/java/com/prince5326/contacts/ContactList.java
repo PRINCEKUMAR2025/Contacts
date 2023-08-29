@@ -58,7 +58,7 @@ public class ContactList extends AppCompatActivity {
         queryBuilder.setGroupBy("name");
 
         showProgress(true);
-        tvLoad.setText("Getting all Attendance...Please wait...");
+        tvLoad.setText("Getting all Contacts...Please wait...");
 
         Backendless.Persistence.of(Contact.class).find(queryBuilder, new AsyncCallback<List<Contact>>() {
             @Override
