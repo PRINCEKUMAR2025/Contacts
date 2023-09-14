@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,6 +23,9 @@ import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.prince5326.contacts.R;
+import com.zegocloud.uikit.prebuilt.call.config.ZegoNotificationConfig;
+import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig;
+import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationService;
 
 public class ContactInfo extends AppCompatActivity {
 
@@ -76,10 +80,14 @@ public class ContactInfo extends AppCompatActivity {
         ivCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String uri="tel:"+ApplicationClass.contacts.get(index).getNumber();
-                Intent intent=new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(uri));
+                String email=ApplicationClass.user.getEmail();
+                String username=email;
+                String target=etMail.getText().toString();
+                String targetname=etName.getText().toString();
+                Intent intent=new Intent(ContactInfo.this,CallingActivity.class);
+                intent.putExtra("username",username);
+                intent.putExtra("target",target);
+                intent.putExtra("targetname",targetname);
                 startActivity(intent);
             }
         });

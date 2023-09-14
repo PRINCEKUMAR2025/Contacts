@@ -41,4 +41,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
+
+    implementation 'com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+'
+    implementation 'com.github.ZEGOCLOUD:zego_uikit_signaling_plugin_android:+'
+
+    implementation ('io.socket:socket.io-client:1.0.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
 }
