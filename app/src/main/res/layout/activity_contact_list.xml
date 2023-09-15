@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@drawable/sky"
     tools:context="com.prince5326.contacts.MainActivity">
 
     <ProgressBar
@@ -44,6 +44,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
+            android:textStyle="bold"
             android:text="Contacts"
             android:textSize="26sp" />
 

@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -17,6 +21,8 @@ import com.prince5326.contacts.R;
 import com.zegocloud.uikit.prebuilt.call.config.ZegoNotificationConfig;
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig;
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationService;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
             btnCreate=findViewById(R.id.btnCreate);
             textView=findViewById(R.id.textView);
             textView3=findViewById(R.id.textView3);
+
+        ImageSlider imageSlider=findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> slideModels=new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.dog1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.bear, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.cat, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.duck, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.horse, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.tiger, ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
         AppCenter.start(getApplication(), "ae9da51b-476e-43da-bb0e-3fc750ec767b",
                 Analytics.class, Crashes.class);

@@ -49,4 +49,5 @@ dependencies {
         // excluding org.json which is provided by Android
         exclude group: 'org.json', module: 'json'
     }
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 }
