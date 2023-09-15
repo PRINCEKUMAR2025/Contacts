@@ -129,7 +129,7 @@ public class ContactInfo extends AppCompatActivity {
             public void onClick(View v) {
 
                 final AlertDialog.Builder dialog=new AlertDialog.Builder(ContactInfo.this);
-                dialog.setMessage("Are you sure you want to delete the Attendance?");
+                dialog.setMessage("Are you sure you want to delete the Contact?");
 
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
