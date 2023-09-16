@@ -14,10 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Contacts"
         tools:targetApi="31">
+
         <activity
             android:name=".CallingActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ContactInfo"
             android:exported="false"
